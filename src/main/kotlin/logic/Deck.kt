@@ -1,29 +1,37 @@
 package logic
 
+import kotlin.math.min
+
 typealias Deck = MutableList<Card>
 
-fun Deck.send(destination: Deck)  {
-  if (isNotEmpty()){
-      send(this.first(), destination)
-  }
+fun Deck.send(destination: Deck) {
+    if (isNotEmpty()) {
+        send(this.first(), destination)
+    }
 }
 
 fun Deck.send(card: Card, destination: Deck) {
-    card.reset()
     destination.add(card)
     remove(card)
+    card.reset()
 }
 
 fun Deck.send(amount: Int, destination: Deck) {
-
+    val amountToSend = min(size, amount)
+    val sent = take(amountToSend)
+    sent.forEach {
+        this.remove(it)
+        it.reset()
+    }
+    destination.addAll(sent)
 }
 
 fun Deck.send(amount: Int, destination: Deck, shuffleBackup: Deck) {
-    //TODO
-//    val card = this.first()
-//    card.reset()
-//    destination.add(card)
-//    remove(card)
+    if (amount > size) {
+        addAll(shuffleBackup.shuffled())
+        shuffleBackup.clear()
+    }
+    send(amount, destination)
 }
 
 fun Deck.drawAll(destination: Deck) {

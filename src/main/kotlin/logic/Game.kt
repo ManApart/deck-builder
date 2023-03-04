@@ -17,6 +17,8 @@ fun newGame(playerCount: Int = 2): Game {
             cards.send(5, it.hand)
         }
     }
+//    println("Game has ${cards.size} cards, ${villains.size} villains, ${supers.size} supers.")
+//    players.forEach { println("${it.superHero.name} has ${it.hand.size} cards") }
 
     return Game(players, cards, mutableListOf(), villains).apply {
         drawPile.send(5, stage)
