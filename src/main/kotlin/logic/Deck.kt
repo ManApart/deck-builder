@@ -14,6 +14,10 @@ fun Deck.send(card: Card, destination: Deck) {
     remove(card)
 }
 
+fun Deck.send(amount: Int, destination: Deck) {
+
+}
+
 fun Deck.send(amount: Int, destination: Deck, shuffleBackup: Deck) {
     //TODO
 //    val card = this.first()

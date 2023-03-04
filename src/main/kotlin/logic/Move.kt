@@ -1,6 +1,6 @@
 package logic
 
-enum class MoveType { DEFEND, ATTACK, TURN_START, TURN_END }
+enum class MoveType { DEFEND, ATTACK, TURN_START, TURN_END, FIRST_REVEAL }
 
 data class Move(
     val type: MoveType,

@@ -25,6 +25,10 @@ class CardBuilder(private val name: String, private val count: Int) {
 
 class CardsBuilder {
     private val cards = mutableListOf<CardBuilder>()
+
+    fun card(name: String, initializer: CardBuilder.() -> Unit) {
+        cards.add(CardBuilder(name, 1).apply(initializer))
+    }
     fun card(name: String, count: Int, initializer: CardBuilder.() -> Unit) {
         cards.add(CardBuilder(name, count).apply(initializer))
     }

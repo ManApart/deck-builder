@@ -2,9 +2,9 @@ package logic
 
 class Player(
     val superHero: SuperHero,
-    val hand: Deck,
-    val drawPile: Deck,
-    val discardPile: Deck,
+    val hand: Deck= mutableListOf(),
+    val drawPile: Deck= mutableListOf(),
+    val discardPile: Deck= mutableListOf(),
 ) {
     var weaknesses = 0
     var extraTurnPower = 0
