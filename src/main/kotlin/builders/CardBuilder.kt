@@ -7,6 +7,7 @@ class CardBuilder(private val name: String, private val count: Int) {
     var cost = 1
     var cardType = CardType.POWER
     var power = 1
+    var victoryPoints: Int? = null
     var getVictoryPoints = { 1 }
     private var moves = mutableListOf<MoveBuilder>()
 
@@ -15,7 +16,10 @@ class CardBuilder(private val name: String, private val count: Int) {
     }
 
     fun build(): List<Card> {
-        return (0 until count).map { Card(name, cost, cardType, power, getVictoryPoints, moves.map { it.build() }) }
+        val victory = if (victoryPoints != null) {
+            { victoryPoints!! }
+        } else getVictoryPoints
+        return (0 until count).map { Card(name, cost, cardType, power, victory, moves.map { it.build() }) }
     }
 }
 
