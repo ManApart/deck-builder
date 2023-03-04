@@ -3,7 +3,7 @@ package builders
 import logic.CardType
 
 const val VULNERABILITY = "Vulnerability"
-const val PUNCH = "Glock Guac"
+const val PUNCH = "Punch"
 
 val allCards = cards {
     card(VULNERABILITY, 10) {

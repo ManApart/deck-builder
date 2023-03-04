@@ -2,14 +2,21 @@ package ui
 
 import kotlinx.html.TagConsumer
 import kotlinx.html.div
+import kotlinx.html.h3
 import logic.Deck
+import logic.HIDDEN_CARD
 import org.w3c.dom.HTMLElement
 import kotlin.math.min
 
 fun TagConsumer<HTMLElement>.deck(deckName: String, deck: Deck, visibleCount: Int = 0) {
-    div {
-        +deckName
-//        println("Deck has ${deck.size} cards and shows $visibleCount")
-        deck.subList(0, min(visibleCount, deck.size-1)).forEach { card(it) }
+    div("deck") {
+        h3 {
+            +deckName
+        }
+        if (visibleCount == 0) {
+            card(HIDDEN_CARD)
+        } else {
+            deck.subList(0, min(visibleCount, deck.size)).forEach { card(it) }
+        }
     }
 }
