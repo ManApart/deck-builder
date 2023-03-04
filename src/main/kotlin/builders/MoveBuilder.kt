@@ -1,9 +1,9 @@
 package builders
 
-import Game
-import Move
-import MoveType
-import Player
+import logic.Game
+import logic.Move
+import logic.MoveType
+import logic.Player
 
 class MoveBuilder {
     var type = MoveType.ATTACK

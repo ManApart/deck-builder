@@ -1,6 +1,6 @@
 package builders
 
-import SuperHero
+import logic.SuperHero
 
 class SuperHeroBuilder(private val name: String) {
     private var moves = mutableListOf<MoveBuilder>()

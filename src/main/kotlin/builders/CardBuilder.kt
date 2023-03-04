@@ -1,7 +1,7 @@
 package builders
 
-import Card
-import CardType
+import logic.Card
+import logic.CardType
 
 class CardBuilder(private val name: String, private val count: Int) {
     var cost = 1
