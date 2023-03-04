@@ -24,6 +24,9 @@ kotlin {
                     enabled.set(true)
                 }
             }
+            testTask{
+                useMocha()
+            }
         }
     }
 }
