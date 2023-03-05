@@ -13,6 +13,9 @@ fun TagConsumer<HTMLElement>.deck(deckName: String, deck: Deck, visibleCount: In
         h3 {
             +deckName
         }
+        div("deck-card-count") {
+            +"${deck.size} cards"
+        }
         if (visibleCount == 0) {
             card(HIDDEN_CARD)
         } else {

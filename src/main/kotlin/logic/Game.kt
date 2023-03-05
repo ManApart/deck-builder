@@ -12,6 +12,7 @@ data class Game(val players: List<Player>, val drawPile: Deck, val stage: Deck, 
     fun nextPlayerTurn() {
         playerTurn++
         if (playerTurn >= players.size) playerTurn = 0
+        players[playerTurn].newTurn()
     }
 }
 

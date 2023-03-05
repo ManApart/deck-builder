@@ -12,6 +12,7 @@ class Player(
 
     fun newTurn(){
         extraTurnPower = 0
+        superHero.moves.forEach { it.reset() }
         hand.drawAll(discardPile)
         drawPile.send(5, hand, discardPile)
     }
