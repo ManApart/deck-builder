@@ -23,18 +23,28 @@ class CardBuilder(private val name: String, private val count: Int) {
     }
 }
 
+fun card(name: String, count: Int, initializer: CardBuilder.() -> Unit): List<Card> {
+    return CardBuilder(name, count).apply(initializer).build()
+}
+
 class CardsBuilder {
     private val cards = mutableListOf<CardBuilder>()
+    private val builtCards = mutableListOf<Card>()
 
     fun card(name: String, initializer: CardBuilder.() -> Unit) {
         cards.add(CardBuilder(name, 1).apply(initializer))
     }
+
     fun card(name: String, count: Int, initializer: CardBuilder.() -> Unit) {
         cards.add(CardBuilder(name, count).apply(initializer))
     }
 
+    fun card(cards: List<Card>){
+        builtCards.addAll(cards)
+    }
+
     fun build(): List<Card> {
-        return cards.flatMap { it.build() }
+        return cards.flatMap { it.build() } + builtCards
     }
 }
 

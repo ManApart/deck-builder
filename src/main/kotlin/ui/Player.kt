@@ -2,17 +2,28 @@ package ui
 
 import kotlinx.html.TagConsumer
 import kotlinx.html.div
-import kotlinx.html.h3
+import kotlinx.html.h1
 import logic.Player
+import logic.SuperHero
 import org.w3c.dom.HTMLElement
 
 fun TagConsumer<HTMLElement>.playerSpace(player: Player) {
     div("player") {
-        h3 {
-            +"Player: ${player.superHero.name}"
+        h1 {
+            +"Player ${player.id}"
         }
+        hero(player.superHero, player)
         deck("Draw Pile", player.drawPile)
         deck("Hand", player.hand, 100)
         deck("Discard Pile", player.discardPile)
+    }
+}
+
+fun TagConsumer<HTMLElement>.hero(hero: SuperHero, player: Player) {
+    with(hero) {
+        div("super-hero") {
+            +hero.name
+            moves(moves, player)
+        }
     }
 }

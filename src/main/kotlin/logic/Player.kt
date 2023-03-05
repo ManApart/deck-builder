@@ -1,6 +1,7 @@
 package logic
 
 class Player(
+    val id: Int,
     val superHero: SuperHero,
     val hand: Deck= mutableListOf(),
     val drawPile: Deck= mutableListOf(),

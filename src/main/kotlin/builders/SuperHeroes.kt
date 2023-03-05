@@ -27,7 +27,9 @@ val allSuperHeroes = superHeroes {
             description = "At the start of every turn, draw an extra card."
             type = MoveType.TURN_START
             move = { _, player ->
+                println("pre: ${player.hand.size}")
                 player.drawPile.send(1, player.hand, player.discardPile)
+                println("post: ${player.hand.size}")
             }
         }
     }
