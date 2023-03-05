@@ -3,7 +3,16 @@ package logic
 import builders.*
 
 data class Game(val players: List<Player>, val drawPile: Deck, val stage: Deck, val superVillains: Deck) {
+    private var playerTurn = 0
 
+    fun isPlayerTurn(player: Player): Boolean{
+        return playerTurn == player.id
+    }
+
+    fun nextPlayerTurn() {
+        playerTurn++
+        if (playerTurn >= players.size) playerTurn = 0
+    }
 }
 
 fun newGame(playerCount: Int = 2): Game {

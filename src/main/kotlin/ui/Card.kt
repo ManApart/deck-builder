@@ -42,18 +42,20 @@ fun TagConsumer<HTMLElement>.moves(moves: List<Move>, player: Player? = null) {
             div("card-move") {
                 +move.description
             }
-            if (player != null && move.canPlay(game, player) && !move.playedThisTurn) {
-                div("button button-active") {
-                    +"Use"
-                    onClickFunction = {
-                        move.move(game, player)
-                        move.playedThisTurn = true
-                        redrawGame(game)
+            if (player != null) {
+                if (move.canPlay(game, player) && !move.playedThisTurn) {
+                    div("button button-active") {
+                        +"Use"
+                        onClickFunction = {
+                            move.move(game, player)
+                            move.playedThisTurn = true
+                            redrawGame(game)
+                        }
                     }
-                }
-            } else {
-                div("button button-disabled") {
-                    +"Use"
+                } else {
+                    div("button button-disabled") {
+                        +"Use"
+                    }
                 }
             }
         }
